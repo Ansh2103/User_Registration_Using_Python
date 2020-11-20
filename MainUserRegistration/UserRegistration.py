@@ -7,6 +7,7 @@ class UserRegistration:
     FIRST_NAME_PATTERN = r'^[A-Z][a-z]{3,}$'
     LAST_NAME_PATTERN = r'^[A-Z][a-z]{3,}$'
     EMAIL_PATTERN = r'^[0-9a-zA-Z]+([._+-][0-9a-zA-Z]+)*[@][0-9A-Za-z]+([.][a-zA-Z]{2,4})*$'
+    PHONE_NUMBER_PATTERN = '^[0-9]{1,2}[ ][0-9]{10}$'
 
     def validate_first_name(self, first_name):
         '''validate_first_name function:
@@ -43,5 +44,14 @@ class UserRegistration:
         validate = pattern.search(email)
         if not validate:
             raise InputException(" Please Enter The Valid Email ID ")
+        else:
+            return True
+
+    def validate_phone_number(self, phone_number):
+
+        pattern = re.compile(self.PHONE_NUMBER_PATTERN)
+        validate = pattern.search(phone_number)
+        if not validate:
+            raise InputException(" Please Enter The Valid Phone Number ")
         else:
             return True
