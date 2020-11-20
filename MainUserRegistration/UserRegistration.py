@@ -8,7 +8,7 @@ class UserRegistration:
     LAST_NAME_PATTERN = r'^[A-Z][a-z]{3,}$'
     EMAIL_PATTERN = r'^[0-9a-zA-Z]+([._+-][0-9a-zA-Z]+)*[@][0-9A-Za-z]+([.][a-zA-Z]{2,4})*$'
     PHONE_NUMBER_PATTERN = '^[0-9]{1,2}[ ][0-9]{10}$'
-    PASSWORD_PATTERN = '[0-9a-zA-Z]{8,}'
+    PASSWORD_PATTERN = '^(?=.*[A-Z])(?=.*[a-z]).{8,}$'
 
     def validate_first_name(self, first_name):
         '''validate_first_name function:
@@ -84,6 +84,7 @@ class UserRegistration:
         :param password:
         :return: True , if it is valid
         Rule1 : User need to enter minimum 8 characters
+                and have at least one upper case
         '''
 
         pattern = re.compile(self.PASSWORD_PATTERN)

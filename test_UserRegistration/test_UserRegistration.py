@@ -39,12 +39,12 @@ def test_invalid_phone_number(main_instance):
        main_instance.validate_phone_number("9334358903")
 
 def test_valid_password(main_instance):
-   result = main_instance.validate_password("abcdefghi")
+   result = main_instance.validate_password("Abcdefghi")
    assert result.__eq__(True)
 
 def test_invalid_password(main_instance):
    with pytest.raises(InputException):
-       main_instance.validate_password("abcd")
+       main_instance.validate_password("abcdefghi")
 
 
 
