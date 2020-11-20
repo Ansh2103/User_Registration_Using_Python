@@ -11,5 +11,14 @@ def test_invalid_first_name(main_instance):
     with pytest.raises(InputException):
         main_instance.validate_first_name(" shubham ")
 
+def test_valid_last_name(main_instance):
+   result = main_instance.validate_first_name("Kumar")
+   assert result.__eq__(True)
+
+def test_invalid_last_name(main_instance):
+   with pytest.raises(InputException):
+       main_instance.validate_first_name("kumar")
+
+
 
 
