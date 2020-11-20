@@ -16,7 +16,7 @@ class UserRegistration:
              It also helps to search a pattern again without rewriting it.
              re.search return the matchobject if there is match in given string
              if it matches with the pattern it reurns true otherwise it will raise
-             a exception and print the given statement
+             an exception and print the given statement
         '''
 
         pattern = re.compile(self.FIRST_NAME_PATTERN)
@@ -52,6 +52,7 @@ class UserRegistration:
         :param email:
         :return: True , if it is valid
         User need to follow Email Id Pattern
+          and test all sample emails
          e.g : abcd.she@gmail.com
         '''
 
