@@ -8,6 +8,7 @@ class UserRegistration:
     LAST_NAME_PATTERN = r'^[A-Z][a-z]{3,}$'
     EMAIL_PATTERN = r'^[0-9a-zA-Z]+([._+-][0-9a-zA-Z]+)*[@][0-9A-Za-z]+([.][a-zA-Z]{2,4})*$'
     PHONE_NUMBER_PATTERN = '^[0-9]{1,2}[ ][0-9]{10}$'
+    PASSWORD_PATTERN = '[0-9a-zA-Z]{8,}'
 
     def validate_first_name(self, first_name):
         '''validate_first_name function:
@@ -28,6 +29,13 @@ class UserRegistration:
 
 
     def validate_last_name(self, last_name):
+        '''
+
+        :param last_name:
+        :return: True ,if it is valid
+        User need to enter Last name start with Cap and
+         has minimum 3 characters
+        '''
 
         pattern = re.compile(self.LAST_NAME_PATTERN)
         validate = pattern.search(last_name)
@@ -39,6 +47,13 @@ class UserRegistration:
 
 
     def validate_email(self, email):
+        '''
+
+        :param email:
+        :return: True , if it is valid
+        User need to follow Email Id Pattern
+         e.g : abcd.she@gmail.com
+        '''
 
         pattern = re.compile(self.EMAIL_PATTERN)
         validate = pattern.search(email)
@@ -48,10 +63,32 @@ class UserRegistration:
             return True
 
     def validate_phone_number(self, phone_number):
+        '''
+
+        :param phone_number:
+        :return: True if it is valid
+        User need to enter valid phone number format
+            i.e; country code follow by space and 10 digit number
+        '''
 
         pattern = re.compile(self.PHONE_NUMBER_PATTERN)
         validate = pattern.search(phone_number)
         if not validate:
             raise InputException(" Please Enter The Valid Phone Number ")
+        else:
+            return True
+
+    def validate_password(self, password):
+        '''
+
+        :param password:
+        :return: True , if it is valid
+        Rule1 : User need to enter minimum 8 characters
+        '''
+
+        pattern = re.compile(self.PASSWORD_PATTERN)
+        validate = pattern.search(password)
+        if not validate:
+            raise InputException(" Please Enter The Valid password ")
         else:
             return True
