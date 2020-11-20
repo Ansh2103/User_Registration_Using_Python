@@ -4,8 +4,9 @@ from MainUserRegistration.UserRegistrationException import InputException
 
 class UserRegistration:
 
-    FIRST_NAME_PATTERN = r'^[A-Z][A-Za-z]{2,}$'
-    LAST_NAME_PATTERN = r'^[A-Z][A-Za-z]{2,}$'
+    FIRST_NAME_PATTERN = r'^[A-Z][a-z]{3,}$'
+    LAST_NAME_PATTERN = r'^[A-Z][a-z]{3,}$'
+    EMAIL_PATTERN = r'^[0-9a-zA-Z]+([._+-][0-9a-zA-Z]+)*[@][0-9A-Za-z]+([.][a-zA-Z]{2,4})*$'
 
     def validate_first_name(self, first_name):
         '''validate_first_name function:
@@ -30,8 +31,17 @@ class UserRegistration:
         pattern = re.compile(self.LAST_NAME_PATTERN)
         validate = pattern.search(last_name)
         if not validate:
-            raise InputException(" Enter First Name Starting With Capital letter and "
+            raise InputException(" Enter Last Name Starting With Capital letter and "
                                  "have minimum 3 characters")
         else:
             return True
 
+
+    def validate_email(self, email):
+
+        pattern = re.compile(self.EMAIL_PATTERN)
+        validate = pattern.search(email)
+        if not validate:
+            raise InputException(" Please Enter The Valid Email ID ")
+        else:
+            return True
