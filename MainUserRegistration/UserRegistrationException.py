@@ -1,4 +1,4 @@
-class InputException(Exception):
+class UserException(Exception):
 
     def __init__(self, message):
 

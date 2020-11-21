@@ -1,6 +1,6 @@
 import pytest
 
-from MainUserRegistration.UserRegistrationException import InputException
+from MainUserRegistration.UserRegistrationException import UserException
 
 def test_valid_first_name(main_instance):
     '''if this function return true then the test will pass'''
@@ -8,17 +8,17 @@ def test_valid_first_name(main_instance):
     assert result.__eq__(True)
 
 def test_invalid_first_name(main_instance):
-    with pytest.raises(InputException):
+    with pytest.raises(UserException):
         main_instance.validate_first_name(" shubham ")
 
 
 def test_valid_last_name(main_instance):
-   result = main_instance.validate_first_name("Kumar")
+   result = main_instance.validate_last_name("Kumar")
    assert result.__eq__(True)
 
 def test_invalid_last_name(main_instance):
-   with pytest.raises(InputException):
-       main_instance.validate_first_name("kumar")
+   with pytest.raises(UserException):
+       main_instance.validate_last_name("kumar")
 
 
 
@@ -27,7 +27,7 @@ def test_valid_phone_number(main_instance):
    assert result.__eq__(True)
 
 def test_invalid_phone_number(main_instance):
-   with pytest.raises(InputException):
+   with pytest.raises(UserException):
        main_instance.validate_phone_number("9334358903")
 
 
@@ -36,7 +36,7 @@ def test_valid_password(main_instance):
    assert result.__eq__(True)
 
 def test_invalid_password(main_instance):
-   with pytest.raises(InputException):
+   with pytest.raises(UserException):
        main_instance.validate_password("Abcd7efghi")
 
 
@@ -62,6 +62,6 @@ def test_moodAnalyzer_should_return_Happy(main_instance):
    assert result.__eq__(True)
 
 def test_moodAnalyzer_should_return_Sad(main_instance):
-   with pytest.raises(InputException):
+   with pytest.raises(UserException):
        main_instance.mood_analyzer("shubham", "kumar", "7903990740", "swayam007@.com")
 

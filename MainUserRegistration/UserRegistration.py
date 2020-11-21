@@ -1,6 +1,6 @@
 import re
 
-from MainUserRegistration.UserRegistrationException import InputException
+from MainUserRegistration.UserRegistrationException import UserException
 
 class UserRegistration:
 
@@ -22,7 +22,7 @@ class UserRegistration:
         pattern = re.compile(self.FIRST_NAME_PATTERN)
         validate = pattern.search(first_name)
         if not validate:
-            raise InputException(" Enter First Name Starting With Capital letter and "
+            raise UserException(" Enter First Name Starting With Capital letter and "
                                  "have minimum 3 characters")
         else:
             return True
@@ -40,7 +40,7 @@ class UserRegistration:
         pattern = re.compile(self.LAST_NAME_PATTERN)
         validate = pattern.search(last_name)
         if not validate:
-            raise InputException(" Enter Last Name Starting With Capital letter and "
+            raise UserException(" Enter Last Name Starting With Capital letter and "
                                  "have minimum 3 characters")
         else:
             return True
@@ -59,7 +59,7 @@ class UserRegistration:
         pattern = re.compile(self.EMAIL_PATTERN)
         validate = pattern.search(email)
         if not validate:
-            raise InputException(" Please Enter The Valid Email ID ")
+            raise UserException(" Please Enter The Valid Email ID ")
         else:
             return True
 
@@ -75,7 +75,7 @@ class UserRegistration:
         pattern = re.compile(self.PHONE_NUMBER_PATTERN)
         validate = pattern.search(phone_number)
         if not validate:
-            raise InputException(" Please Enter The Valid Phone Number ")
+            raise UserException(" Please Enter The Valid Phone Number ")
         else:
             return True
 
@@ -93,7 +93,7 @@ class UserRegistration:
         pattern = re.compile(self.PASSWORD_PATTERN)
         validate = pattern.search(password)
         if not validate:
-            raise InputException(" Please Enter The Valid password ")
+            raise UserException(" Please Enter The Valid password ")
         else:
             return True
 
