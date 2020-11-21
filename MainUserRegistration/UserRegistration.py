@@ -96,3 +96,9 @@ class UserRegistration:
             raise InputException(" Please Enter The Valid password ")
         else:
             return True
+
+    def mood_analyzer(self, first_name, last_name, phone_number, email, true=None):
+        if self.validate_first_name(first_name) == true and self.validate_last_name(last_name) == true and self.validate_phone_number(phone_number) == true and self.validate_email(email) ==  true :
+            return "HAPPY"
+        else:
+            return "SAD"

@@ -20,9 +20,6 @@ def test_invalid_last_name(main_instance):
    with pytest.raises(InputException):
        main_instance.validate_first_name("kumar")
 
-def test_invalid_email(main_instance):
-   with pytest.raises(InputException):
-       main_instance.validate_email("swayam@.com")
 
 
 def test_valid_phone_number(main_instance):
@@ -52,12 +49,19 @@ def test_invalid_password(main_instance):
     ("abc.100@abc.com.au", True),
     ("abc@1.com", True),
     ("abc@gmail.com.com", True),
-    ("abc+100@gmail.com", True)
+    ("abc+100@gmail.com", True),
+
 ])
 def test_valid_email(input, expected, main_instance):
     result = main_instance.validate_email(input)
     assert result == expected
 
 
+def test_moodAnalyzer_should_return_Happy(main_instance):
+   result = main_instance.mood_analyzer("Shubham", "Kumar", "91 7903990740", "swayam007.sm@gmail.com")
+   assert result.__eq__(True)
 
+def test_moodAnalyzer_should_return_Sad(main_instance):
+   with pytest.raises(InputException):
+       main_instance.mood_analyzer("shubham", "kumar", "7903990740", "swayam007@.com")
 
